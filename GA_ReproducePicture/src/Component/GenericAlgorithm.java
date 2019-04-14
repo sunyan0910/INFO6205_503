@@ -21,9 +21,9 @@ public class GenericAlgorithm {
         this.crossoverRate = crossoverRate;
     }
     
-    public Population initPopulation(int chromosomeLen)
+    public Population initPopulation()
     {
-    Population population=new Population(this.populationSize,chromosomeLen);
+    Population population=new Population(this.populationSize);
     return population;
     }
     
@@ -43,15 +43,14 @@ public class GenericAlgorithm {
     population.setPopulationFitness(populationFitness);
     }
     
-    public boolean isTerminalConditionMet(Population population)
+    /*public boolean isTerminalConditionMet(Population population)
     {
     for(Individual in:population.getPopulation())
     {
         if(in.getFitness()==1)
             return true;
     }
-    return false;
-    }
+    retur*/
     
     public Individual selectParents(Population population)
     {
