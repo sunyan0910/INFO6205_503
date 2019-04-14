@@ -5,6 +5,8 @@
  */
 package Component;
 
+import java.util.Random;
+
 
 
 /**
@@ -19,19 +21,36 @@ public class Individual {
     {
     this.chromosome=chromosome;
     }
+
+    public Individual() {
+        this.chromosome=new int[10];
+    }
     
-    public Individual()
+    /*public Individual()
     {
+        Random nmb=new Random();
+        int x1 = nmb.nextInt(200) + 1;
+        int x2 = nmb.nextInt(200) + 1;
+        int x3 = nmb.nextInt(200) + 1;
+
+        int x4 = nmb.nextInt(500) + 1;
+        int x5 = nmb.nextInt(500) + 1;
+        int x6 = nmb.nextInt(500) + 1;
+
+        int x7 = nmb.nextInt(500) + 1;
+        int x8 = nmb.nextInt(500) + 1;
+        int x9 = nmb.nextInt(500) + 1;
+
+        int alpha=nmb.nextInt(254);
         Triangle t=new Triangle();
+        chromosome=new int[]{};
         chromosome=t.getChromosome();
+    }*/
+
+    public void setChromosome(int[] chromosome) {
+        this.chromosome = chromosome;
     }
     
-    private void swap(int[]a,int i,int j)
-    {
-     int temp=a[i];
-     a[i]=a[j];
-     a[j]=temp;
-    }
     public int[] getChromosome()
     {
         return this.chromosome;
