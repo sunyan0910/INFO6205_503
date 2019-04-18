@@ -1,3 +1,7 @@
 /bin/
 .classpath
 .project
+/nbproject
+manifest.mf
+build.xmf
+/build
