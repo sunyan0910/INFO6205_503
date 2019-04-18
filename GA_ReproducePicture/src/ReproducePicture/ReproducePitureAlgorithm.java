@@ -34,7 +34,7 @@ public class ReproducePitureAlgorithm {
         Icon icon=new ImageIcon("/Users/sunyan/Desktop/pic.png");
         label.setIcon(icon);
         win.add(label);
-        win.add(population);
+        //win.add(population);
 
         win.setVisible(true);
     //for(Individual indi:population.getPopulation())
