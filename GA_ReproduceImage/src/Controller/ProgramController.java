@@ -47,11 +47,19 @@ public class ProgramController implements DiffCalculator<WritableImage,Individua
     	BasePosition.setBoundaryMaxX(image.getWidth());
     	BasePosition.setBoundaryMaxY(image.getHeight());
     	
+    	// ProgramController  is  a  Diff_Calculator;
+    	FitnessCalculator calc = new FitnessCalculator(writeable_image,this);
+    	
+    	
     	GenericAlgorithm ga=new GenericAlgorithm(20,0.1,0.95);
-    	Population population=ga.initPopulation();
-//    	ga.crossoverPopulation(population);
-//    	ga.mutatePopulation(population);
-//    	System.out.print(population.toString());
+    	Population population=ga.initPopulation(calc);
+    	
+    	// this needs to be put into  constructor.
+    	//ga.evalPopulation(population, calc);
+    	ga.crossoverPopulation(population);
+    	ga.mutatePopulation(population);
+    	// need to be eval again
+    	System.out.print(population.toString());
     	
     	Individual[] sample = population.getPopulation();
     	for(int i =0;i<population.getSize();i++) {

@@ -18,8 +18,9 @@ public class GenericAlgorithm {
 		this.crossoverRate = crossoverRate;
 	}
 
-	public Population initPopulation() {
+	public Population initPopulation(FitnessCalculator calc) {
 		Population population = new Population(this.populationSize);
+		this.evalPopulation(population,calc);
 		return population;
 	}
 
@@ -60,8 +61,12 @@ public class GenericAlgorithm {
 		// Find second parent
 		Individual parent2 = selectParent(population);
 		
+		
+		// gene length 
+		int crossover_length = Math.min( parent1.getChromosomeLength(),  parent2.getChromosomeLength());
+		
 		// Loop over genome
-		for (int geneIndex = 0; geneIndex < parent1.getChromosomeLength(); geneIndex++) {
+		for (int geneIndex = 0; geneIndex <crossover_length; geneIndex++) {
 			// Use half of parent1's genes and half of parent2's genesChapter 2
 			// Implementation of a Basic Genetic Algorithm38
 			if (0.5 > Math.random()) {
@@ -77,6 +82,7 @@ public class GenericAlgorithm {
 				newPopulation.setIndividual(populationIndex, parent1);
 			}
 		}
+		
 		return newPopulation;
 	}
 	
@@ -99,7 +105,6 @@ public class GenericAlgorithm {
 						while(newGene.checkEquality(currentGene)) {
 							newGene = new GenePolygon();
 						}
-							
 						individual.setGene(geneIndex, newGene);
 					}
 				}
@@ -118,8 +123,12 @@ public class GenericAlgorithm {
 		double rouletteWheelPosition = Math.random() * populationFitness;
 		double spinWheel = 0;
 		for (Individual in : individuals) {
+			System.out.println("Parent:" +populationFitness);
+			System.out.println("Child:" +in.getFitness());
 			spinWheel += in.getFitness();
 			if (spinWheel >= rouletteWheelPosition) {
+				System.out.print(individuals.length);
+				System.out.println("Final:" + spinWheel);
 				return in;
 			}
 		}

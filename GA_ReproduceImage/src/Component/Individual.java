@@ -13,6 +13,9 @@ public class Individual {
 
 	public Individual(int size) {
 		this.chromosome = new GenePolygon[size];
+		for(int i =0;i<size;i++) {
+			chromosome[i] = new GenePolygon();
+		}
 	}
 	
 	
