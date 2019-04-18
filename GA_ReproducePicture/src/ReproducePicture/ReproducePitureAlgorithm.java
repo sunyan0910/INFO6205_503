@@ -17,9 +17,9 @@ import javax.swing.JLabel;
  * @author sunyan
  */
 public class ReproducePitureAlgorithm {
-    
-    
-   
+
+
+
 
     public static void main(String[] args)
     {
@@ -35,7 +35,7 @@ public class ReproducePitureAlgorithm {
         label.setIcon(icon);
         win.add(label);
         win.add(population);
-        
+
         win.setVisible(true);
     //for(Individual indi:population.getPopulation())
     //{
@@ -43,15 +43,15 @@ public class ReproducePitureAlgorithm {
     //}
     //ga.evalPopulation(population);
     //int generation=1;
-    
+
     /*while(!ga.isTerminalConditionMet(population))
     {
     //System.out.println("Best solution:");
     //population.getFittest(0).printChromosome();
     //TODO:crossover
-    
+
     //TODO:mutation
-    
+
     ga.evalPopulation(population);
     generation++;
     }*/
