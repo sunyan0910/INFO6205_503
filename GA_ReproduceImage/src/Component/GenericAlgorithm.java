@@ -12,10 +12,12 @@ public class GenericAlgorithm {
 	private double crossoverRate;
 	private int elitismCount;
 	
-	public GenericAlgorithm(int populationSize, double mutationRate, double crossoverRate) {
+	public GenericAlgorithm(int populationSize, double mutationRate, double crossoverRate, int chromosomeLength) {
 		this.populationSize = populationSize;
 		this.mutationRate = mutationRate;
 		this.crossoverRate = crossoverRate;
+		this.elitismCount =(int)0.3*populationSize;
+		Individual.setMaxGeneNum(chromosomeLength);
 	}
 
 	public Population initPopulation(FitnessCalculator calc) {
@@ -40,10 +42,16 @@ public class GenericAlgorithm {
 		population.setPopulationFitness(populationFitness);
 	}
 
-	/*
-	 * public boolean isTerminalConditionMet(Population population) { for(Individual
-	 * in:population.getPopulation()) { if(in.getFitness()==1) return true; } retur
-	 */
+	
+	public boolean isTerminalConditionMet(Population population) {
+		for (Individual in : population.getPopulation()) {
+			if (in.getFitness() == 1)
+				return true;
+		}
+		return false;
+	}
+	
+	 
 	public Population crossoverPopulation(Population population) {
 		
 		// Create new population
@@ -54,13 +62,12 @@ public class GenericAlgorithm {
 		Individual parent1 = population.getFittest(populationIndex);
 		// Apply crossover to this individual?
 		if (this.crossoverRate > Math.random() && populationIndex > this.elitismCount) {
-			
+		
 		// Initialize offspring
 		Individual offspring = new Individual(parent1.getChromosomeLength());
 		
 		// Find second parent
 		Individual parent2 = selectParent(population);
-		
 		
 		// gene length 
 		int crossover_length = Math.min( parent1.getChromosomeLength(),  parent2.getChromosomeLength());
@@ -98,6 +105,7 @@ public class GenericAlgorithm {
 			for (int geneIndex = 0; geneIndex < individual.getChromosomeLength(); geneIndex++) {
 				// Skip mutation if this is an elite individual
 				if (populationIndex >= this.elitismCount) {
+
 					// Does this gene need mutation?
 					if (this.mutationRate > Math.random()) {
 						GenePolygon newGene = new GenePolygon();
@@ -123,12 +131,8 @@ public class GenericAlgorithm {
 		double rouletteWheelPosition = Math.random() * populationFitness;
 		double spinWheel = 0;
 		for (Individual in : individuals) {
-			System.out.println("Parent:" +populationFitness);
-			System.out.println("Child:" +in.getFitness());
 			spinWheel += in.getFitness();
 			if (spinWheel >= rouletteWheelPosition) {
-				System.out.print(individuals.length);
-				System.out.println("Final:" + spinWheel);
 				return in;
 			}
 		}

@@ -16,6 +16,5 @@ public class FitnessCalculator {
 	}
 	
 	private DiffCalculator<WritableImage,Individual> diff_calculator;
-	private double fitness;
 	private WritableImage environment;
 }

@@ -41,6 +41,7 @@ public class Main extends Application {
             
             ProgramController controller = loader.getController();
             controller.setMainApp(this);
+
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

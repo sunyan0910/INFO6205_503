@@ -35,7 +35,6 @@ public class GenePolygon {
 		if(gene.position.length != this.position.length)
 			return false;
 		
-	
 		if(!this.color.equal(gene.color))
 			return false;
 		for(int i =0;i<position.length;i++) {
@@ -49,6 +48,8 @@ public class GenePolygon {
 		return true;
 		
 	}
+	
+	// getter and setter  Color
 	public BaseColor getColor() {
 		return color;
 	}
@@ -62,6 +63,7 @@ public class GenePolygon {
 		this.color.setColor(val_r, val_g, val_b,val_a);
 	}
 	
+	// getter and setter  position
 	public BasePosition[] getPosition() {
 		return position;
 	}

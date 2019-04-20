@@ -51,6 +51,8 @@ public class BasePosition {
 	}
 	
 	
+	
+	// set position boundary
 	public static void setBoundaryMaxX(double value) {
 		max_random_x = value;
 	}
