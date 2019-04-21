@@ -15,3 +15,6 @@ Java 8.0 + JavaFx +JUnit
 ![source image](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Black_hole_-_Messier_87.jpg/330px-Black_hole_-_Messier_87.jpg)
 
 from wikipedia [Wiki](https://en.wikipedia.org/wiki/Black_hole)
+
+## Final Report Link
+[Final Report](https://github.com/sunyan0910/INFO6205_503/blob/master/Final_Project_Report_503.pdf)
