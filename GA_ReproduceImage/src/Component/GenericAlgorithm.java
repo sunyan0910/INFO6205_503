@@ -53,13 +53,12 @@ public class GenericAlgorithm {
 	 
 	public Population crossoverPopulation(Population population) {
 		
-		// Create new population
 		Population newPopulation = new Population(population.getSize());
 		
-		// Loop over current population by fitness
+		// Loop current population by fitness
 		for (int populationIndex = 0; populationIndex< population.getSize();populationIndex++) {
 		Individual parent1 = population.getFittest(0);
-		// Apply crossover to this individual?
+		// Do we need to apply crossover to this individual
 		if (this.crossoverRate > Math.random() && populationIndex > this.elitismCount) {
 		
 		// Initialize offspring
@@ -67,22 +66,24 @@ public class GenericAlgorithm {
 		
 		// Find second parent
 		Individual parent2 = selectParent(population);
-
+		
+		// Test
 		System.out.println(populationIndex + "crossover" + population.getIndividule(populationIndex).getFitness());
+		
 		// gene length 
 		int crossover_length = Math.min( parent1.getChromosomeLength(),  parent2.getChromosomeLength());
 		
 		// Loop over genome
 		for (int geneIndex = 0; geneIndex <crossover_length; geneIndex++) {
-			// Use 70% of parent1's genes and 30% of parent2's genes
 			
+			// Use 70% of parent1's genes and 30% of parent2's genes
 			if (0.7 > Math.random()) {
 				offspring.setGene(geneIndex, parent1.getGene(geneIndex));
 			} else {
 				offspring.setGene(geneIndex, parent2.getGene(geneIndex));
 			}
 		}
-		// Add offspring to new population
+				// Add offspring to new population
 				newPopulation.setIndividual(populationIndex, offspring);
 		} else {
 				// Add individual to new population without applying crossover
@@ -96,7 +97,7 @@ public class GenericAlgorithm {
 	
 	
 	public Population mutatePopulation(Population population) {
-		// Initialize new population
+		
 		Population newPopulation = new Population(population.getSize());
 		// Loop over current population by fitness
 		for (int populationIndex = 0; populationIndex < population.getSize(); populationIndex++) {
