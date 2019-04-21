@@ -8,27 +8,49 @@ package Component;
 import java.util.Random;
 
 public class Individual {
+	private static int max_num_gene = 1500;
 	private GenePolygon[] chromosome;
 	private double fitness = -1;
 
+	
+	//constructor
 	public Individual(int size) {
 		this.chromosome = new GenePolygon[size];
+		for(int i =0;i<size;i++) {
+			chromosome[i] = new GenePolygon();
+		}
 	}
-
-
+	
 	public Individual(GenePolygon[] chromosome) {
 		this.chromosome = chromosome;
 	}
 
 	public Individual() {
-		this.chromosome = new GenePolygon[10];
-		for(int i =0;i<10;i++) {
-			this.chromosome[i] = new GenePolygon();
+		Random random = new Random();
+		int num_gene = random.nextInt(max_num_gene)+5;
+		this.chromosome = new GenePolygon[num_gene];
+		for(int i =0;i<num_gene;i++) {
+			chromosome[i] = new GenePolygon();
 		}
 	}
-
-
-
+	
+	public  static void setMaxGeneNum(int value) {
+		max_num_gene = value;
+	}
+	public boolean checkEquality(Individual other) {
+		if(this.getChromosomeLength() != other.getChromosomeLength())
+			return false;
+		else {
+			for(int i =0 ;i<this.getChromosomeLength(); i++) {
+				if (this.getGene(i).checkEquality(other.getGene(i)) == false)
+					return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	//getter and setter chromosome
 	public void setChromosome(GenePolygon[] chromosome) {
 		this.chromosome = chromosome;
 	}
@@ -40,17 +62,20 @@ public class Individual {
 	public int getChromosomeLength() {
 		return this.chromosome.length;
 	}
-
+	
+	
+	// getter and setter gene
 	public GenePolygon getGene(int i) {
 		return this.chromosome[i];
 	}
 
-
+	
 	public void setGene(int index, GenePolygon gene) {
 		this.chromosome[index] = gene;
 	}
-
-
+	
+	
+	// getter and setter fitness
 	public void setFitness(double fitness) {
 		this.fitness = fitness;
 	}
@@ -59,14 +84,13 @@ public class Individual {
 		return this.fitness;
 	}
 
-	@Override
-	public String toString() {
-		String str = "";
+	public void printChromosome() {
 		for (int i = 0; i < this.chromosome.length; i++) {
-			str += this.chromosome[i].toString() + "\n";
+			System.out.print("--" + this.chromosome[i]);
 		}
-		return str;
+		System.out.print("--");
+		System.out.print("\n");
 	}
-
+	
 
 }

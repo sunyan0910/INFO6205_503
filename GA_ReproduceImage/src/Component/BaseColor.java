@@ -8,10 +8,10 @@ public class BaseColor {
 	private double a;
 	
 	public BaseColor() {
-		this.r =Math.random();
-		this.g =Math.random();
-		this.b =Math.random();
-		this.a =Math.random();
+		this.r = Math.random();
+		this.g = Math.random();
+		this.b = Math.random();
+		this.a = Math.random();
 	}
 	
 	public BaseColor(double val_r,double val_g,double val_b,double val_a) {
@@ -37,6 +37,8 @@ public class BaseColor {
 		return this.r == color.r && this.g== color.g && this.b == color.b && this.a == color.a;
 	}
 	
+	
+	// getter and setter double
 	public double getR() {
 		return r;
 	}
@@ -62,13 +64,17 @@ public class BaseColor {
 		this.a = a;
 	}
 	
-	@Override
-	public String toString() {
-		String str = "Color: ";
-		str+= " r:"+r;
-		str+= " g:"+g;
-		str+= " b:"+b;
-		str+= " a:"+a;
-		return str;
+	
+	// getter int
+	public int getRint() {
+		return (int)r*255;
+	}
+	
+	public int getGint() {
+		return (int)g*255;
+	}
+	
+	public int getBint() {
+		return (int)b*255;
 	}
 }

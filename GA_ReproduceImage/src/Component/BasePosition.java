@@ -51,20 +51,20 @@ public class BasePosition {
 	}
 	
 	
+	
+	// set position boundary
 	public static void setBoundaryMaxX(double value) {
 		max_random_x = value;
 	}
 	public static void setBoundaryMaxY(double value) {
 		max_random_y = value;
 	}
-	
-	
-	@Override
-	public String toString() {
-		String str = "Position: ";
-		str+=" x: "+x;
-		str += " y: "+y;
-		return str;
+	public static double getBoundaryMaxX() {
+		return max_random_x;
+	}
+
+	public static double getBoundaryMaxY() {
+		return max_random_y;
 	}
 
 }

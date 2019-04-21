@@ -19,7 +19,7 @@ public class GenePolygon {
 		this.position = new BasePosition[verticles];
 		
 		for(int i =0;i<verticles;i++) {
-			this.position[i] = new BasePosition();
+			position[i] = new BasePosition();
 		}
 	}
 	
@@ -35,7 +35,6 @@ public class GenePolygon {
 		if(gene.position.length != this.position.length)
 			return false;
 		
-	
 		if(!this.color.equal(gene.color))
 			return false;
 		for(int i =0;i<position.length;i++) {
@@ -45,10 +44,11 @@ public class GenePolygon {
 			
 		}
 		
-		
 		return true;
 		
 	}
+	
+	// getter and setter  Color
 	public BaseColor getColor() {
 		return color;
 	}
@@ -62,20 +62,11 @@ public class GenePolygon {
 		this.color.setColor(val_r, val_g, val_b,val_a);
 	}
 	
+	// getter and setter  position
 	public BasePosition[] getPosition() {
 		return position;
 	}
 	public void setPosition(BasePosition[] position) {
 		this.position = position;
-	}
-	
-	@Override
-	public String toString() {
-		String str = "";
-		str += color.toString();
-		for(int i =0;i<position.length; i++) {
-			str+=position[i].toString();
-		}
-		return str;
 	}
 }
